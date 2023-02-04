@@ -19,3 +19,21 @@ spec:
           image: gaju/nodeapp:latest
           ports:
           - containerPort: 3000
+
+
+---
+
+apiversion: v1
+kind: Service
+metadata:
+  name: nodeapp-service
+spec:
+  selector:
+    app: nodeapp
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 3000
+    nodeport: 31100
+   
